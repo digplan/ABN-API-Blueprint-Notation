@@ -4,13 +4,14 @@ API Blueprint Notation (ABN) is a new, structured, and intuitive approach for de
 
 ### Format Overview:
 
-* Request Block:
+#### Request Block:
 
-First Line: The first line of the block contains the URL, HTTP verb, and any fields or parameters enclosed in braces {}.
+* First Line: The first line of the block contains the URL, HTTP verb, and any fields or parameters enclosed in braces {}.
 Example: POST /users {username, password}
 Response Block:
 
-Subsequent Lines: These lines detail the expected HTTP response. Each line includes the HTTP response code, followed by any relevant headers and the body of the response, each enclosed in braces {}.
+* Subsequent Lines: These lines detail the expected HTTP response. Each line includes the HTTP response code, followed by any relevant headers and the body of the response, each enclosed in braces {}.
+  
 Example:
 css
 Copy code
@@ -21,6 +22,7 @@ URL and HTTP Verb:
 
 Clearly states the endpoint and the method (GET, POST, etc.).
 Example: GET /posts
+
 Fields and Parameters:
 
 Enclosed in {} immediately following the URL and verb.
