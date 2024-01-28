@@ -1,65 +1,52 @@
-## API Blueprint Notation (ABN)
+### API Blueprint Notation (ABN)
 
-API Blueprint Notation (ABN) is a new, structured, and intuitive approach for describing and testing web APIs. ABN is designed to offer clear and concise documentation of API endpoints, their behavior, and expected responses. The notation focuses on readability and ease of understanding, making it accessible for both developers and non-technical stakeholders.
+#### Summary:
 
-### Format Overview:
+API Blueprint Notation (ABN) is a structured, easy-to-read format designed for defining and testing web APIs. Each API request is described in a block of lines, with the first line detailing the request and subsequent lines indicating possible responses.
 
-#### Request Block:
+#### Format:
 
-* First Line: The first line of the block contains the URL, HTTP verb, and any fields or parameters enclosed in braces {}.
-Example: POST /users {username, password}
-Response Block:
+1. **Request Line Format:**
+   - **URL:** The endpoint of the API.
+   - **HTTP Verb:** Enclosed in square brackets `[GET]`, `[POST]`, `[PUT]`, `[DELETE]`, etc.
+   - **HTTP Headers:** Optional, enclosed in square brackets `[Content-Type: application/json]`.
+   - **Fields:** Request body or parameters, enclosed in braces `{username, password}`.
 
-* Subsequent Lines: These lines detail the expected HTTP response. Each line includes the HTTP response code, followed by any relevant headers and the body of the response, each enclosed in braces {}.
-  
-Example:
-css
-Copy code
-200 {Content-Type: application/json} {id, username, token}
-400 {Content-Type: application/json} {error_message}
-Detailed Description:
-URL and HTTP Verb:
-
-Clearly states the endpoint and the method (GET, POST, etc.).
-Example: GET /posts
-
-Fields and Parameters:
-
-Enclosed in {} immediately following the URL and verb.
-Include query parameters, request body fields, or path variables.
-Example: {userId, postTitle}
-HTTP Response Code:
-
-Indicates the expected response status for the given request.
-Example: 200 for a successful request.
-Headers:
-
-Follows the response code, enclosed in {}.
-Details relevant response headers.
-Example: {Content-Type: application/json}
-Response Body:
-
-Outlines the expected structure of the response data.
-Includes key data fields or an error message.
-Example: {id, username, token}
-Sample ABN Documentation:
-css
-Copy code
-GET /posts/{postId}
-200 {Content-Type: application/json} {id, title, content, author}
-404 {Content-Type: application/json} {error_message}
-
-POST /users {username, email, password}
-201 {Content-Type: application/json} {id, username}
-400 {Content-Type: application/json} {error_message}
-Benefits:
-Clarity: Offers a clear and systematic overview of API endpoints.
-Efficiency: Streamlines the documentation and testing process.
-Adaptability: Easy to integrate with existing documentation tools and platforms.
-Collaboration-Friendly: Accessible format for team discussions and reviews.
-ABN aims to simplify the process of API development and testing, ensuring that both technical and non-technical team members can easily understand and contribute to API documentation.
+   *Example:*
+https://api.example.com/user [POST] [Authorization: Bearer {token}] {username, email, password}
 
 
+2. **Response Lines Format:**
+- **HTTP Response Status Code:** Such as `200`, `404`, `500`.
+- **Headers:** Optional, enclosed in braces `{Content-Type: application/json}`.
+- **Response Object Fields:** Enclosed in quotes, with optional regex for value formats `"id": "\d+", "name": ".+"`.
+
+*Example:*
+
+200 {Content-Type: application/json} {"id": "\d+", "name": ".+", "email": ".+"}
+404 {} {"error": "User not found"}
+500 {} {"error": "Internal Server Error"}
 
 
+#### Complete Example:
+
+https://api.example.com/user [POST] [Authorization: Bearer {token}] {username, email, password}
+200 {Content-Type: application/json} {"id": "\d+", "name": ".+", "email": ".+"}
+400 {} {"error": "Invalid request data"}
+404 {} {"error": "User not found"}
+500 {} {"error": "Internal Server Error"}
+
+
+#### Use Case:
+
+- **API Developers:** To define and share API specifications.
+- **Testers:** For creating test cases and automating API testing.
+- **Documentation:** As a part of API documentation for clear understanding of API behavior.
+
+#### Benefits:
+
+- **Clarity:** Clear and concise format for understanding API requests and responses.
+- **Versatility:** Supports various HTTP methods, headers, and response formats.
+- **Validation:** Regex support allows for precise field value validation.
+- **Ease of Use:** Simple to learn and apply, enhancing communication between developers and stakeholders.
 
