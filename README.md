@@ -21,10 +21,10 @@ API Blueprint Notation (ABN) is a structured, easy-to-read format designed for d
 #### Complete Example:
 ````
 ## Get a user
-/user/${id} [GET]
-200 [] {id=/\d+/, name=/.+/}
-404 [] {"error": "User not found"}
-500 [] {"error": "Internal Server Error"}
+/user/$id=/[a-z]{8}/ [GET]
+200 [] {"id": /\d+/, "name": /.+/}
+404 [] {"error": /User not found/i}
+500 [] {"error": /Internal Server Error/}
 
 ## Add a new user
 /user [POST] [Authorization: Bearer ${token}] {username, email, password}
