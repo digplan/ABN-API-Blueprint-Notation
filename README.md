@@ -12,30 +12,20 @@ API Blueprint Notation (ABN) is a structured, easy-to-read format designed for d
    - **HTTP Headers:** Optional, enclosed in square brackets `[Content-Type: application/json]`.
    - **Fields:** Request body or parameters, enclosed in braces `{username, password}`.
 
-   *Example:*
-https://api.example.com/user [POST] [Authorization: Bearer {token}] {username, email, password}
-
-
 2. **Response Lines Format:**
 - **HTTP Response Status Code:** Such as `200`, `404`, `500`.
 - **Headers:** Optional, enclosed in braces `{Content-Type: application/json}`.
 - **Response Object Fields:** Enclosed in quotes, with optional regex for value formats `"id": "\d+", "name": ".+"`.
 
-*Example:*
-
-200 {Content-Type: application/json} {"id": "\d+", "name": ".+", "email": ".+"}
-404 {} {"error": "User not found"}
-500 {} {"error": "Internal Server Error"}
-
 
 #### Complete Example:
-
-https://api.example.com/user [POST] [Authorization: Bearer {token}] {username, email, password}
+````
+https://api.example.com/user [POST] [Authorization: Bearer ${token}] {username, email, password}
 200 {Content-Type: application/json} {"id": "\d+", "name": ".+", "email": ".+"}
-400 {} {"error": "Invalid request data"}
-404 {} {"error": "User not found"}
-500 {} {"error": "Internal Server Error"}
-
+400 [] {"error": "Invalid request data"}
+404 [] {"error": "User not found"}
+500 [] {"error": "Internal Server Error"}
+````
 
 #### Use Case:
 
