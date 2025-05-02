@@ -34,6 +34,24 @@ API Blueprint Notation (ABN) is a structured, easy-to-read format designed for d
 500 [] {"error": "Internal Server Error"}
 ````
 
+#### Optionally, an even shorter version ABN-Terse
+
+1. **Request Line Format:**
+   - **URL:** The endpoint of the API.
+   - **HTTP Verb:** Enclosed in square brackets `[GET]`, `[POST]`, `[PUT]`, `[DELETE]`, etc.
+   - **HTTP Headers:** Optional, enclosed in square brackets `[Content-Type: application/json]`.
+   - **Fields:** Request body or parameters, enclosed in braces `{username, password}`.
+
+#### Example:
+````
+## Get a user
+/user?id=/[a-z]{8}/&name=/[A-Za-z+]/ [GET]
+200 | {"id": /\d+/, "name": /.+/}
+
+## Add a new user
+/user [POST] [Authorization: Bearer ${token}] {username, email, password}
+200 | {id=/\d+/, name, email=/.+/}  // JSON response only. Is successful if status == 200, or matching text
+````
 #### Use Case:
 
 - **API Developers:** To define and share API specifications.
