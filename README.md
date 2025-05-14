@@ -1,4 +1,10 @@
-### API Blueprint Notation (ABN)
+### API Blueprint Notation (ABN) v2
+```
+POST\nhttps://api.openai.com/v1/chat/completions\nContent-Type:application/json\n{"model":"$model[gpt-4o-mini]","messages":[$messages]}
+```
+
+
+### API Blueprint Notation (ABN) v1
 
 #### Summary:
 
